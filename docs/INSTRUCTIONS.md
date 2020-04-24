@@ -9,7 +9,7 @@ Este documento apresentar parte do conhecimento necessário para o desenvolvimen
 
 Exemplo de objeto após cadastro do novo produto:
 
-```
+```json
 {
   "id": "1b820cb9-1ffa-415d-80af-a91641b9c53e",
   "code": 2,
@@ -38,7 +38,7 @@ Observação:
 - ``*PUT /products/:id:``* A rota deverá alterar <code>code, description, buyPrice, sellPrice e tags</code> do produto através do seu id.
 
 ## Remoção
-3.1 - Não deve ser possível remover um produto inexistente
+3.1 - Não deve ser possível remover um produto inexistente. Na tentativa disto deverá ser retornado um status code 400.
 
 3.2 - Deve retornar o código ``204`` quando um produto for removido
 

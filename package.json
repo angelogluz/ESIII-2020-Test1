@@ -1,0 +1,38 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "build": "sucrase ./src -d ./dist --transforms imports",
+    "dev": "nodemon src/server.js",
+    "start": "node dist/server.js"
+  },
+  "nodemonConfig": {
+    "execMap": {
+      "js": "node -r sucrase/register"
+    }
+  },
+  "jest": {
+    "transform": {
+      ".(js|jsx|ts|tsx)": "@sucrase/jest-plugin"
+    }
+  },
+  "dependencies": {
+    "@types/jest": "^25.2.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "uuidv4": "^6.0.7"
+  },
+  "devDependencies": {
+    "@sucrase/jest-plugin": "^2.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "jest": "^25.2.6",
+    "nodemon": "^2.0.2",
+    "sucrase": "^3.13.0",
+    "supertest": "^4.0.2"
+  }
+}

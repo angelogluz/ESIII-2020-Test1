@@ -17,12 +17,11 @@ app.get('/products', (request, response) => {
 });
 
 app.post('/products', (request, response) => {
-  // TODO: Desenvolver registro no array products
   const {
     code, description, buyPrice, sellPrice, tags,
   } = request.body;
   const p = products.find((v) => v.code == code);
-  const lov = p ? p.lovers : 0;
+  const lov = !p ? 0 : p.lovers;
   const product = {
     id: uuid(),
     code,
@@ -37,35 +36,32 @@ app.post('/products', (request, response) => {
 });
 
 app.put('/products/:id', (request, response) => {
-  // TODO: Desenvolver atualização de produto por ID
+  // TODO
   const { id } = request.params;
-
   const {
     description, buyPrice, sellPrice, tags,
   } = request.body;
 
-  const p = products.find((v) => v.id == id);
-
-  if (p) {
-    p.description = description;
-    p.buyPrice = buyPrice;
-    p.sellPrice = sellPrice;
-    p.tags = tags;
-
-    response.json(p);
-  } else {
+  const product = products.find((value) => value.id == id);
+  if (!product) {
     response.status(400).send();
+  } else {
+    product.description = description;
+    product.buyPrice = buyPrice;
+    product.sellPrice = sellPrice;
+    product.tags = tags;
+
+    response.json(product);
   }
 });
 
 app.delete('/products/:code', (request, response) => {
   const { code } = request.params;
   const index = products.findIndex((v) => v.code == code);
-
   if (index == -1) {
     response.status(400).send();
   } else {
-    products = products.filter((v) => v.code != code);
+    products = products.filter((value) => value.code != code);
     response.status(204).send();
   }
 });
@@ -73,22 +69,21 @@ app.delete('/products/:code', (request, response) => {
 app.post('/products/:code/love', (request, response) => {
   const { code } = request.params;
 
-  const p = products.find((v) => v.code == code);
-
-  if (!p) {
+  const product = products.find((v) => v.code == code);
+  if (product === undefined) {
     response.status(400).send();
   } else {
-    products.filter((v) => v.code == code)
-      .map((val) => val.lovers += 1);
+    products.filter((value) => value.code == code)
+      .map((v) => v.lovers += 1);
 
-    response.json({
-      lovers: p.lovers,
-    });
+    response.json({ lovers: product.lovers });
   }
 });
 
 app.get('/products/:code', (request, response) => {
-  // TODO: Desenvolver busca de produtos por código
+  const { code } = request.params;
+
+  response.json(products.filter((v) => v.code == code));
 });
 
 export default app;

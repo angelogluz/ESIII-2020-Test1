@@ -1,5 +1,5 @@
 # Requisitos/Especificação
-Este documento apresentar parte do conhecimento necessário para o desenvolvimento da tarefa. Conhecimentos adicionais serão extraídos de comentários de dentro dos arquivos de desenvolvimento e dos retornos dos arquivos de teste.
+Este documento apresenta parte do conhecimento necessário para o desenvolvimento da tarefa. Conhecimentos adicionais serão extraídos de comentários de dentro dos arquivos de desenvolvimento e dos retornos dos arquivos de teste.
 ## Criação
 1.1 - Deve ser possível adicionar um novo produto
 

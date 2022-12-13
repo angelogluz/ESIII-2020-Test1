@@ -22,7 +22,7 @@
   "dependencies": {
     "@types/jest": "^25.2.1",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "uuidv4": "^6.0.7"
   },
   "devDependencies": {
